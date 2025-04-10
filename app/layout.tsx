@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { ThemeProvider } from "@/providers/ThemeProvider"
 import "./globals.css"
+import { Header } from "@/components/Header"
 
 export const metadata: Metadata = {
   title: "Ally Assurance Advisor",
@@ -22,6 +23,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <Header />
             {children}
           </ThemeProvider>
         </body>
