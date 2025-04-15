@@ -14,7 +14,7 @@ import {
 import { AuditData } from "@/types/audit"
 
 export default function AuditSelector() {
-  const [selectedYear, setSelectedYear] = useState<string>("2023")
+  const [selectedYear, setSelectedYear] = useState<string>("2025")
 
   // Audit data with lorem ipsum titles
   const auditData: AuditData = {
