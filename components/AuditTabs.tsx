@@ -10,12 +10,12 @@ export function AuditTabs() {
   return (
     <Card>
       <CardContent className="p-4">
-        <Tabs defaultValue="scope" onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+        <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full h-[300px] overflow-y-auto">
+          <TabsList className="grid w-full grid-cols-2 sticky top-0 bg-background z-10">
             <TabsTrigger value="scope">High Level Scope</TabsTrigger>
             <TabsTrigger value="description">Project Description</TabsTrigger>
           </TabsList>
-          <TabsContent value="scope" className="mt-4 h-[200px] overflow-y-auto pr-1">
+          <TabsContent value="scope" className="mt-4 pr-1">
             <div className="text-sm">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
@@ -41,7 +41,7 @@ export function AuditTabs() {
               </p>
             </div>
           </TabsContent>
-          <TabsContent value="description" className="mt-4 h-[200px] overflow-y-auto pr-1">
+          <TabsContent value="description" className="mt-4 pr-1">
             <div className="text-sm">
               <p>
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
