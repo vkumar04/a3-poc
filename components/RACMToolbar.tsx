@@ -26,20 +26,12 @@ export default function RACMToolbar() {
     <TooltipProvider delayDuration={300}>
       <div className="w-full flex justify-between items-center p-2 border-b bg-background">
         <div className="flex items-center gap-1">
-          {/* Menu button with dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <Menu className="h-5 w-5" />
-                    <span className="sr-only">Menu</span>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Menu</p>
-                </TooltipContent>
-              </Tooltip>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Menu</span>
+              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               {menuItems.map((item, index) => (
