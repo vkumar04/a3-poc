@@ -14,15 +14,15 @@ import Link from "next/link"
 // Navigation items
 const navigationItems = [
   {
-    title: "Dashboard",
+    title: "Home",
     icon: Home,
-    href: "/dashboard",
+    href: "/",
     isActive: true,
   },
   {
-    title: "Analytics",
+    title: "RACM",
     icon: BarChart3,
-    href: "/analytics",
+    href: "/racm",
   },
   {
     title: "Users",
