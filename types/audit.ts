@@ -14,3 +14,8 @@ export type ToolbarButton = {
   label: string
   onClick?: () => void
 }
+
+export interface AuditHeaderProps {
+  title: string
+  description: string
+}
