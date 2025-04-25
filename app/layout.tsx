@@ -7,6 +7,7 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar"
 import { SideMenu } from "@/components/SideMenu"
+import { ReactScan } from "@/components/ReactScan/ReactScan"
 
 export const metadata: Metadata = {
   title: "Ally Assurance Advisor",
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <>
       <html lang="en" suppressHydrationWarning>
+        <ReactScan />
         <head />
         <body>
           <ThemeProvider
