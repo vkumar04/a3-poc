@@ -1,4 +1,6 @@
-export const initialTree = [
+import { TreeNode } from "@/types/tree";
+
+export const initialTree: TreeNode[] = [
   {
     id: "1",
     title: "Level 1 - A",
@@ -11,8 +13,8 @@ export const initialTree = [
             id: "1-1-1",
             title: "Level 3 - A1a",
             children: [
-              {id: "1-1-1-1", title: "Level 4 - A1a-i", children: []},
-              {id: "1-1-1-2", title: "Level 4 - A1a-ii", children: []},
+              { id: "1-1-1-1", title: "Level 4 - A1a-i", children: [] },
+              { id: "1-1-1-2", title: "Level 4 - A1a-ii", children: [] },
             ],
           },
           {
@@ -62,25 +64,25 @@ export const levelColors = [
   "border-l-yellow-400"
 ];
 
-export function removeNodeById(tree: any[], id: string): {node: any, newTree: any[]} {
+export function removeNodeById(tree: TreeNode[], id: string): { node: TreeNode | null, newTree: TreeNode[] } {
   for (let i = 0; i < tree.length; i++) {
     if (tree[i].id === id) {
       const node = tree[i];
       const newTree = [...tree.slice(0, i), ...tree.slice(i + 1)];
-      return {node, newTree};
+      return { node, newTree };
     }
     if (tree[i].children) {
-      const {node, newTree} = removeNodeById(tree[i].children, id);
+      const { node, newTree } = removeNodeById(tree[i].children, id);
       if (node) {
         tree[i].children = newTree;
-        return {node, newTree: tree};
+        return { node, newTree: tree };
       }
     }
   }
-  return {node: null, newTree: tree};
+  return { node: null, newTree: tree };
 }
 
-export function insertNodeAtPath(tree: any[], path: string[], index: number, node: any): any[] {
+export function insertNodeAtPath(tree: TreeNode[], path: string[], index: number, node: TreeNode): TreeNode[] {
   if (path.length === 0) {
     const newTree = [...tree];
     newTree.splice(index, 0, node);
@@ -98,7 +100,7 @@ export function insertNodeAtPath(tree: any[], path: string[], index: number, nod
   });
 }
 
-export function findPathToNode(tree: any[], id: string, path: string[] = []): string[] | null {
+export function findPathToNode(tree: TreeNode[], id: string, path: string[] = []): string[] | null {
   for (let i = 0; i < tree.length; i++) {
     if (tree[i].id === id) {
       return path;
@@ -111,7 +113,7 @@ export function findPathToNode(tree: any[], id: string, path: string[] = []): st
   return null;
 }
 
-export function findIndexAtPath(tree: any[], path: string[], id: string): number {
+export function findIndexAtPath(tree: TreeNode[], path: string[], id: string): number {
   if (path.length === 0) {
     return tree.findIndex(n => n.id === id);
   }
@@ -121,7 +123,7 @@ export function findIndexAtPath(tree: any[], path: string[], id: string): number
   return findIndexAtPath(next.children || [], rest, id);
 }
 
-export function findNodeLabel(nodes: any[], id: string): string | null {
+export function findNodeLabel(nodes: TreeNode[], id: string): string | null {
   for (const node of nodes) {
     if (node.id === id) return node.title;
     if (node.children) {

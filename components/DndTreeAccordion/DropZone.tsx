@@ -1,7 +1,7 @@
 'use client'
 
 import { useSortable } from "@dnd-kit/sortable";
-import { levelColors } from "./treeUtils";
+import { levelColors } from "../../utils/treeUtils";
 
 export default function DropZone({ id, style, level }: { id: string; style?: React.CSSProperties; level: number }) {
   const { setNodeRef, isOver } = useSortable({ id });

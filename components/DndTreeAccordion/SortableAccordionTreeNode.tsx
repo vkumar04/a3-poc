@@ -6,7 +6,8 @@ import { CSS } from "@dnd-kit/utilities";
 import { AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
 import { GripVertical } from "lucide-react";
 import DropZone from "./DropZone";
-import { levelColors } from "./treeUtils";
+import { levelColors } from "../../utils/treeUtils";
+import { TreeNode } from "@/types/tree";
 
 export default function SortableAccordionTreeNode({
   node,
@@ -14,10 +15,10 @@ export default function SortableAccordionTreeNode({
   parentPath = [],
   onRenderChildren,
 }: {
-  node: any;
+  node: TreeNode;
   level?: number;
   parentPath?: string[];
-  onRenderChildren: (children: any[], parentPath: string[]) => ReactNode;
+  onRenderChildren: (children: TreeNode[], parentPath: string[]) => ReactNode;
   colorClass?: string;
 }) {
   const {attributes, listeners, setNodeRef, transform, transition, isDragging} = useSortable({id: node.id});
@@ -56,7 +57,7 @@ export default function SortableAccordionTreeNode({
           <SortableContext
             items={
               node.children && node.children.length > 0
-                ? node.children.map((c: any) => c.id)
+                ? node.children.map((c: TreeNode) => c.id)
                 : [dropZoneId]
             }
             strategy={verticalListSortingStrategy}
