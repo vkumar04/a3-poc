@@ -3,7 +3,8 @@
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { Accordion } from "../ui/accordion";
 import SortableAccordionTreeNode from "./SortableAccordionTreeNode";
-import { colorPalette } from "./treeUtils";
+import { colorPalette } from "../../utils/treeUtils";
+import { TreeNode } from "@/types/tree";
 
 export default function RenderSortableTree({
   nodes,
@@ -11,10 +12,10 @@ export default function RenderSortableTree({
   parentPath = [],
   onRenderChildren,
 }: {
-  nodes: any[];
+  nodes: TreeNode[];
   level?: number;
   parentPath?: string[];
-  onRenderChildren: (children: any[], parentPath: string[]) => React.ReactNode;
+  onRenderChildren: (children: TreeNode[], parentPath: string[]) => React.ReactNode;
 }) {
   return (
     <SortableContext items={nodes.map(n => n.id)} strategy={verticalListSortingStrategy}>

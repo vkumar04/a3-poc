@@ -4,7 +4,7 @@ import { useState, useCallback } from "react";
 import { DndContext, closestCenter, DragOverlay, type DragEndEvent } from "@dnd-kit/core";
 import { GripVertical } from "lucide-react";
 import RenderSortableTree from "./RenderSortableTree";
-import { findPathToNode, removeNodeById, insertNodeAtPath, findIndexAtPath, findNodeLabel, initialTree } from "./treeUtils";
+import { findPathToNode, removeNodeById, insertNodeAtPath, findIndexAtPath, findNodeLabel, initialTree } from "../../utils/treeUtils";
 
 export default function DndTreeAccordion() {
   const [tree, setTree] = useState(initialTree);
