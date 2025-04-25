@@ -1,4 +1,7 @@
+'use client'
+
 import { Home, Settings, Users, FileText, BarChart3, HelpCircle } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 import {
   Sidebar,
@@ -11,13 +14,11 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 
-// Navigation items
 const navigationItems = [
   {
     title: "Home",
     icon: Home,
     href: "/",
-    isActive: true,
   },
   {
     title: "RACM",
@@ -47,6 +48,8 @@ const navigationItems = [
 ]
 
 export function SideMenu() {
+  const pathname = usePathname()
+
   return (
     <Sidebar collapsible="icon" className="border-r transition-all duration-300 ease-in-out">
       <SidebarContent className="pt-4">
@@ -57,7 +60,7 @@ export function SideMenu() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     asChild
-                    isActive={item.isActive}
+                    isActive={pathname === item.href} // Set isActive dynamically
                     tooltip={item.title}
                     className="group relative transition-all duration-300 ease-in-out hover:translate-x-1 hover:shadow-md"
                   >
