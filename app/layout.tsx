@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <ReactScan />
+        {process.env.NEXT_PUBLIC_ENV === "development" && <ReactScan />}
         <head />
         <body>
           <ThemeProvider
