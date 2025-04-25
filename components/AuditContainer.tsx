@@ -1,6 +1,7 @@
 import { AuditHeader } from "./AuditHeader"
 import { AuditTabs } from "./AuditTabs"
 import { AuditEntity } from "./AuditEntity"
+import DndTreeAccordion from "@/components/DndTreeAccordion/DndTreeAccordion"
 
 export default function AuditDashboard() {
   return (
@@ -16,10 +17,7 @@ export default function AuditDashboard() {
 
       <div className="md:col-span-9 bg-muted rounded-lg p-6">
         <h2 className="text-2xl font-bold mb-4">Audit Dashboard</h2>
-        <p className="text-muted-foreground">
-          This is the main content area where audit details, charts, and analysis will be displayed. Select an item from
-          the left panel to view detailed information.
-        </p>
+        <DndTreeAccordion />
       </div>
     </div>
   )
