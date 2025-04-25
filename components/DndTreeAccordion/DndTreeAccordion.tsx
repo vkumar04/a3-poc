@@ -5,6 +5,7 @@ import { DndContext, closestCenter, DragOverlay, type DragEndEvent } from "@dnd-
 import { GripVertical } from "lucide-react";
 import RenderSortableTree from "./RenderSortableTree";
 import { findPathToNode, removeNodeById, insertNodeAtPath, findIndexAtPath, findNodeLabel, initialTree } from "../../utils/treeUtils";
+import { TreeNode } from "@/types/tree";
 
 export default function DndTreeAccordion() {
   const [tree, setTree] = useState(initialTree);
@@ -28,7 +29,6 @@ export default function DndTreeAccordion() {
     const activePath = findPathToNode(tree, String(active.id)) || [];
     const overPath = findPathToNode(tree, String(over.id)) || [];
     if (activePath.length !== overPath.length) return;
-    const activeIndex = findIndexAtPath(tree, activePath, String(active.id));
     const overIndex = findIndexAtPath(tree, overPath, String(over.id));
     const {node: draggedNode, newTree: treeWithoutNode} = removeNodeById(tree, String(active.id));
     if (!draggedNode) return;
@@ -37,7 +37,7 @@ export default function DndTreeAccordion() {
   }
 
   const renderChildren = useCallback(
-    (children: any[], parentPath: string[]) => (
+    (children: TreeNode[], parentPath: string[]) => (
       <RenderSortableTree
         nodes={children}
         level={parentPath.length + 1}
