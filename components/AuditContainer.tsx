@@ -1,7 +1,7 @@
 import { AuditHeader } from "./AuditHeader"
 import { AuditTabs } from "./AuditTabs"
 import { AuditEntity } from "./AuditEntity"
-import DndTreeAccordion from "./DndTreeAccordion"
+import DndTreeAccordion from "@/components/DndTreeAccordion/DndTreeAccordion"
 
 export default function AuditDashboard() {
   return (
