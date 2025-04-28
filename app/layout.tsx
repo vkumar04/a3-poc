@@ -35,7 +35,7 @@ export default function RootLayout({
               <div className="flex min-h-screen w-full">
                 <SideMenu />
                 <SidebarInset className="flex-1 w-full">
-                  <div className="flex items-center">
+                  <div className="flex items-center sticky top-0 z-50 bg-background">
                     <Header />
                   </div>
                   {children}
