@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { QueryProvider } from "@/providers/QueryProvider"
 import { ThemeProvider } from "@/providers/ThemeProvider"
 import "./globals.css"
 import { Header } from "@/components/Header"
@@ -19,7 +21,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <>
+    <QueryProvider>
+      {process.env.NEXT_PUBLIC_ENV === "development" && (
+        <ReactQueryDevtools initialIsOpen={false} />
+      )}
       <html lang="en" suppressHydrationWarning>
         {process.env.NEXT_PUBLIC_ENV === "development" && <ReactScan />}
         <head />
@@ -44,6 +49,6 @@ export default function RootLayout({
           </ThemeProvider>
         </body>
       </html>
-    </>
+    </QueryProvider>
   )
 }
