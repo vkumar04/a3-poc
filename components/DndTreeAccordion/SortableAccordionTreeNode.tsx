@@ -8,6 +8,7 @@ import { GripVertical } from "lucide-react";
 import DropZone from "./DropZone";
 import { levelColors } from "../../utils/treeUtils";
 import { TreeNode } from "@/types/tree";
+import { useEffect, useState } from "react";
 
 export default function SortableAccordionTreeNode({
   node,
@@ -29,6 +30,11 @@ export default function SortableAccordionTreeNode({
 
   const dropZoneId = `${node.id}-dropzone`;
   const colorClass = levelColors[(level - 1) % levelColors.length];
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <AccordionItem
@@ -53,7 +59,7 @@ export default function SortableAccordionTreeNode({
       </div>
       <AccordionContent>
         <div className="pl-2 text-sm text-muted-foreground"></div>
-        {level < 4 && (
+        {level < 4 && isMounted && (
           <SortableContext
             items={
               node.children && node.children.length > 0
