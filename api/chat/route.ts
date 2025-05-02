@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 import { streamText } from 'ai';
-import { anthropic } from '@ai-sdk/anthropic';
+import { openai } from '@ai-sdk/openai';
 import fs from 'fs';
 import path from 'path';
 
@@ -12,19 +12,16 @@ export async function POST(req: NextRequest) {
       return new Response(JSON.stringify({ error: 'No prompt provided' }), { status: 400 });
     }
 
-    // Define the path to your Excel file
     const excelFilePath = path.join(process.cwd(), 'data', 'your-file.xlsx'); // adjust folder and filename as needed
 
-    // Check if file exists
     if (!fs.existsSync(excelFilePath)) {
       return new Response(JSON.stringify({ error: 'Excel file not found' }), { status: 404 });
     }
 
-    // Read the Excel file buffer
     const buffer = fs.readFileSync(excelFilePath);
 
     const result = await streamText({
-      model: anthropic('claude-3-opus-20240229'),
+      model: openai('gpt-4o'),
       messages: [
         {
           role: 'user',
